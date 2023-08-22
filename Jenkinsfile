@@ -2,14 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('git') {
             steps {
-                echo 'Hello World'
+                echo ''
             }
         }
         stage('Build') {
             steps {
-                sh 'mvnw clean install -DskipTests'
+                sh 'git config --global --add safe.directory '*''
+                sh'mvnw clean install -DskipTests'
             }
         }
     }    
