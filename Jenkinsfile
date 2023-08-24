@@ -7,5 +7,10 @@ pipeline {
                 sh 'mvnw clean install -DskipTests'
             }
         }
+        stage('Checkout code') {
+            steps {
+                 checkout scm
+            }
+        }
     }    
 }
