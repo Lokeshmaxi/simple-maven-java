@@ -20,7 +20,7 @@ pipeline {
         stage('Docker Build') {
             agent any
             steps {
-               sh 'docker build -t lokeshmaxi/simple-java-ap:test1 .'
+               sh 'docker build -t lokeshmaxi/simple-java-ap:test1 .   --context $dockerLocation --dockerfile=$dockerFile'
             }
         }
         // stage('Docker Push') {
