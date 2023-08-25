@@ -11,6 +11,10 @@ pipeline {
                 sh './mvnw clean install -DskipTests -Denforcer.skip=true'
             }
         }
+        stage('Docker Initialize'){
+             def dockerHome = tool 'docker'
+             env.PATH = "${dockerHome}/bin:${env.PATH}"
+        }
         stage('Docker Build') {
             agent any
             steps {
