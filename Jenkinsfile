@@ -25,7 +25,8 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    docker.build("${REPOSITORY}/${DOCKER_IMAGE}:${DOCKER_TAG}")
+                    def gitCommit = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
+                    docker.build("${REPOSITORY}/${DOCKER_IMAGE}:${gitcommit}")
                 }
             }
         }
