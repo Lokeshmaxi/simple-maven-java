@@ -5,7 +5,7 @@ pipeline {
     }
      environment {
         DOCKER_IMAGE = 'simple-java-ap'  // Name of the Docker image
-        DOCKER_TAG = 'latest'           // Tag for the Docker image (could be dynamic like git commit hash)
+        // DOCKER_TAG = 'latest'           // Tag for the Docker image (could be dynamic like git commit hash)
         REGISTRY = 'docker.io'          // Docker Hub or other registry
         REPOSITORY = 'lokeshmaxi'       // Your Docker Hub username or private registry repo
     }
@@ -26,7 +26,7 @@ pipeline {
                 script {
                     // Build the Docker image
                     def gitCommit = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
-                    docker.build("${REPOSITORY}/${DOCKER_IMAGE}:${gitcommit}")
+                    docker.build("${REPOSITORY}/${DOCKER_IMAGE}:${gitCommit}")
                 }
             }
         }
