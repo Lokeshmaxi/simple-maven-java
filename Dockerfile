@@ -1,12 +1,12 @@
-FROM openjdk:11
+FROM openjdk:11-jdk-slim
 
 WORKDIR /opt
-RUN mkdir -p /opt 
+# RUN mkdir -p /opt 
 COPY ./target/*.jar /opt/app.jar
 
-RUN test -f /opt/app.jar && \
-    echo "JAR exists" || (echo "JAR missing" && exit 1)
+# RUN test -f /opt/app.jar && \
+#     echo "JAR exists" || (echo "JAR missing" && exit 1)
 
-RUN ls -la /usr/local/openjdk-11/bin/java && \
-    /usr/local/openjdk-11/bin/java -version
+# RUN ls -la /usr/local/openjdk-11/bin/java && \
+#     /usr/local/openjdk-11/bin/java -version
 CMD ["java","-jar","/opt/app.jar"]
