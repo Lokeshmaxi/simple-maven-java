@@ -2,7 +2,7 @@ FROM openjdk:11-jdk-slim
 
 WORKDIR /opt
 # RUN mkdir -p /opt 
-COPY ./target/*.jar /opt/app.jar
+COPY ./target/static-web-demo-0.0.1-SNAPSHOT.jar /opt/app.jar
 
 # RUN test -f /opt/app.jar && \
 #     echo "JAR exists" || (echo "JAR missing" && exit 1)
