@@ -33,6 +33,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
+                    def gitCommit = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
                     // Login to Docker registry using Jenkins credentials
                     withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin ${REGISTRY}"
