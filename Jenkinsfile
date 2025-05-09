@@ -8,6 +8,7 @@ pipeline {
         // DOCKER_TAG = 'latest'           // Tag for the Docker image (could be dynamic like git commit hash)
         REGISTRY = 'docker.io'          // Docker Hub or other registry
         REPOSITORY = 'lokeshmaxi'       // Your Docker Hub username or private registry repo
+        SONARQUBE = 'SonarQube'  // Must match the name configured in Jenkins
     }
 
     stages {
@@ -16,9 +17,11 @@ pipeline {
                 sh 'mvn clean install -DskipTests'
             }
         }
-        stage('Test Docker') {
+        stage('SonarQube Analysis') {
             steps {
-                sh 'docker --version'
+                withSonarQubeEnv("${env.SONARQUBE}") {
+                    sh 'mvn sonar:sonar'
+                }
             }
         }
         stage('Build Docker Image') {
