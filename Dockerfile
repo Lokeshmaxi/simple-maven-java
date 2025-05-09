@@ -1,6 +1,5 @@
 FROM openjdk:11
 
-USER root
 WORKDIR /opt
 RUN mkdir -p /opt 
 COPY ./target/*.jar /opt/app.jar
