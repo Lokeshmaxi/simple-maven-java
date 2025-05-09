@@ -37,7 +37,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin ${REGISTRY}"
                         // Push the image to Docker Hub or a private registry
-                        sh "docker push ${REPOSITORY}/${DOCKER_IMAGE}:${DOCKER_TAG}"
+                        sh "docker push ${REPOSITORY}/${DOCKER_IMAGE}:${gitCommit}"
                     }
                 }
             }
