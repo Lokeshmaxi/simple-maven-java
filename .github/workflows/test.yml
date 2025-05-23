@@ -30,4 +30,24 @@ jobs:
       matrix: 
         os: [java]
         version: [11]
-        fail-fall: [false]
+        fail-fast: [false]
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: java
+        uses: actions/setup-java@v3
+        with: 
+          distribution: temurin
+          java-version: ${{ matrix.version }}  
+      - name: mavencache
+        uses: actions/cacheing@v2
+        with:
+          path: ~./m2/repository
+      - name: maventest
+        uses: mvn test
+      - name: Maven build
+        uses: mvn clean install
+      - name: sonarqube
+        env: 
+          SONARQUBE_TOKEN: ${{secrets.SONARQUBE_TOKEN}}    
+        run: mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN -D  
