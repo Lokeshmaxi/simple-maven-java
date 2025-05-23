@@ -9,7 +9,7 @@ on:
 jobs:
   ci_build: 
     name: CI build
-    runs-on: selfhosted
+    runs-on: [selfhosted,self-hosted,windows]
     steps:
     - uses: actions/checkout@v4
     - name: maven-build
