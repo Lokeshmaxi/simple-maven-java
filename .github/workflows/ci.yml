@@ -1,0 +1,17 @@
+name: ci-pipeline 
+
+on:
+  push:
+    branches: 
+     - "**"
+  workflow_dispatch:
+
+jobs:
+  ci_build: 
+    name: CI build
+    runs-on: selfhosted
+    steps:
+    - uses: actions/checkout@v4
+    - name: maven-build
+      run: mvn clean install  -Dskiptests=true
+ 
