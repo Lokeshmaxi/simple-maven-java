@@ -2,7 +2,7 @@ name: ci-pipeline
 
 on:
   push:
-    branches:  ["none","main"]
+    branches:  ["none"]
   workflow_dispatch:
 
 jobs:
