@@ -1,2 +1,0 @@
-user: admin
-password: kOFcm@1921cnkmwcmkc
