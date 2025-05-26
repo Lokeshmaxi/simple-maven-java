@@ -2,7 +2,7 @@ name: ci-pipeline
 
 on:
   push:
-    branches:  ["main"]
+    branches:  ["none"]
   workflow_dispatch:
 
 jobs:
@@ -11,8 +11,6 @@ jobs:
     runs-on: [selfhosted,self-hosted,windows]
     steps:
     - uses: actions/checkout@v4
-    - name: gitleaks
-      uses: dhsathiya/gitleaks-action@master
     - name: Set up Java
       uses: actions/setup-java@v4
       with:
