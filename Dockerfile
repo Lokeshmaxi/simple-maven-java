@@ -10,3 +10,6 @@ COPY ./target/*.jar /opt/app.jar
 # RUN ls -la /usr/local/openjdk-11/bin/java && \
 #     /usr/local/openjdk-11/bin/java -version
 CMD ["java","-jar","/opt/app.jar"]
+
+
+#rfdsfbfr
